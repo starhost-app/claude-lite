@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "batch-tools": {
+      "type": "stdio",
+      "command": "/usr/local/bin/mcp-batch-server",
+      "args": [],
+      "env": {},
+      "alwaysLoad": true
+    }
+  }
+}
