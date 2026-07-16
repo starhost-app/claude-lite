@@ -1,12 +1,14 @@
 # claude-lite: Arch-based Claude Code image with a prebuilt batch-tools MCP
 # server. Nothing is copied from local build context -- every asset is
-# fetched over HTTP from the fixed GitHub release URL below at build time,
-# so this Dockerfile is the only file anyone needs.
+# fetched over HTTP at build time, so this Dockerfile is the only file
+# anyone needs. Defaults to the raw dist/ files on `main` (not a pinned
+# release) so a fix pushed to main is picked up on the next build without
+# needing a new release tag.
 FROM archlinux:latest
 
 LABEL org.opencontainers.image.title="claude-lite"
 
-ARG ASSETS_URL="https://github.com/starhost-app/claude-lite/releases/download/v0.0.1"
+ARG ASSETS_URL="https://raw.githubusercontent.com/starhost-app/claude-lite/main/dist"
 
 RUN pacman -Syu --noconfirm --needed \
         curl git ripgrep base-devel sudo \
