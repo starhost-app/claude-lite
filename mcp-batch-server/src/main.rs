@@ -281,6 +281,9 @@ impl BatchServer {
 impl ServerHandler for BatchServer {
     fn get_info(&self) -> rmcp::model::ServerInfo {
         rmcp::model::ServerInfo {
+            capabilities: rmcp::model::ServerCapabilities::builder()
+                .enable_tools()
+                .build(),
             instructions: Some(
                 "Batch execution tools. Prefer these over individual Bash/Write/mkdir calls \
                 whenever a task involves more than one shell command, file write, or directory: \
